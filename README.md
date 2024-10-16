@@ -1,9 +1,12 @@
-# NetInfer
+# ResNet-ONNX-TensorRT
+
+Module
 
 ```shell
 pip install onnxruntime-gpu
 ```
 
+Lib Version
 ```shell
 Windows 11
 CUDA 12.6
@@ -15,7 +18,7 @@ Python 3.10
 
 ## Test Result
 ```
-Onnx:
+Onnx (GPU):
 resnet10 FPS 1104.949544 
 resnet18 FPS  516.008626
 resnet50 FPS  333.727555
@@ -26,7 +29,7 @@ resnet10PE64 FPS  956.631219
 resnet18PE64 FPS  571.736885 
 resnet50PE64 FPS  350.914636
 
-TensorRT
+TensorRT:
 resnet10 FPS 2438.268527
 resnet18 FPS 1703.828298
 resnet50 FPS 974.808511 
