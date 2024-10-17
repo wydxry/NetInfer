@@ -77,7 +77,10 @@ class Embedding(nn.Module):
         # x = x + self.pos_emb    # (1, 32, 64, 64)
         # pos_emb = self.pos_emb.squeeze()
         # pos_emb = torch.tile(self.pos_emb, (x.shape[0], 1, 1, 1))  #待确认
-        pos_emb = self.pos_emb
+        # pos_emb = self.pos_emb
+
+        pos_emb = self.pos_emb.repeat(x.shape[0], 1, 1, 1)
+        
         # print("pos_emb.shape", pos_emb.shape)
         # print("x.shape", x.shape)
         x = torch.concat([x, pos_emb], dim=1)  # (1, 32, 128, 128)
