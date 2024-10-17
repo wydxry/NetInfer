@@ -1,12 +1,9 @@
 # ResNet-ONNX-TensorRT
 
-Module
+Test ResNet infer time in ONNX and TensorRT.
 
-```shell
-pip install onnxruntime-gpu
-```
+## Hard & Soft Wave and version
 
-Lib Version
 ```shell
 Windows 11
 GPU 4090
@@ -17,7 +14,69 @@ PyTorch 2.4.1
 Python 3.10
 ```
 
+CUDA 12.6
+
+- [CUDA Toolkit 12.6 Update 2 Downloads | NVIDIA Developer](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
+
+cuDNN 8.9.7
+
+- https://developer.nvidia.com/downloads/compute/cudnn/secure/8.9.7/local_installers/12.x/cudnn-windows-x86_64-8.9.7.29_cuda12-archive.zip/
+
+TensorRT 10.5.0
+
+- https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.5.0/zip/TensorRT-10.5.0.18.Windows.win10.cuda-12.6.zip
+
+- ```Shell
+  pip install tensorrt-10.5.0-cp310-none-win_amd64.whl
+  ```
+
+PyTorch 2.4.1
+
+```shell
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+```
+
+Other
+
+```shell
+pip install onnx
+pip install onnxruntime-gpu
+pip install pycuda
+pip install tensorrt
+```
+
+PS:
+
+CUDA, cuDNN, and TensorRT should add path to the sys path, TensorRT's lib and include files should be copy to CUDA folders.
+
+## How to use
+
+1. Net to onnx
+
+   ```shell
+   python convert_onnx.py
+   ```
+
+2. infer time in onnx
+
+   ```shell
+   python infer_onnx.py
+   ```
+
+3. onnx to tensorrt after step 1 or step 2
+
+   ```shell
+   trtexec --onnx=xxx.onnx --saveEngine=xxx.engine
+   ```
+
+4. infer time in tensorrt after step 3
+
+   ```shell
+   python infer_tensorrt.py
+   ```
+
 ## Test Result
+
 ```
 Onnx (GPU):
 resnet10 FPS 1104.949544 
