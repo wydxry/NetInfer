@@ -9,6 +9,7 @@ pip install onnxruntime-gpu
 Lib Version
 ```shell
 Windows 11
+GPU 4090
 CUDA 12.6
 cuDnn 8.9.7.29
 TensorRT 10.5.0.18
