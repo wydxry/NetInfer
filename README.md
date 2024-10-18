@@ -13,7 +13,8 @@ TensorRT 10.5.0.18
 PyTorch 2.4.1
 Python 3.10
 onnx 1.17.0
-onnxruntime-gpu 1.19.2
+onnxruntime-gpu 1.19.2 (Python)
+onnxruntime-gpu 1.18.0 (C++)
 ```
 
 CUDA 12.6
@@ -37,6 +38,11 @@ PyTorch 2.4.1
 ```shell
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 ```
+Onnx Runtime 1.18.0 (C++)
+
+- https://github.com/microsoft/onnxruntime/releases/download/v1.18.0/onnxruntime-win-x64-gpu-cuda12-1.18.0.zip
+
+PS: C++ version 1.18.0 is different from python version 1.19.2, cause it confilt with cuDnn 8.9.7.
 
 Other
 
@@ -49,7 +55,7 @@ pip install tensorrt
 
 PS:
 
-CUDA, cuDNN, and TensorRT should add path to the sys path, TensorRT's lib and include files should be copy to CUDA folders.
+CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT's lib and include files should be copy to CUDA folders.
 
 ## How to use
 
@@ -79,6 +85,8 @@ CUDA, cuDNN, and TensorRT should add path to the sys path, TensorRT's lib and in
 
 ## Test Result
 
+### Python
+
 ```
 Onnx (GPU):
 resnet10 FPS 1104.949544 
@@ -102,3 +110,21 @@ resnet10PE64 FPS  1989.452322
 resnet18PE64 FPS  1149.313923 
 resnet50PE64 FPS  672.243645
 ```
+
+### C++
+```
+Onnx (GPU):
+resnet10 FPS 1222.05
+resnet18 FPS 586.27
+resnet50 FPS 390.137
+resnet10PE128 FPS  592.557
+resnet18PE128 FPS  359.803
+resnet50PE128 FPS 239.143
+resnet10PE64 FPS  887.784
+resnet18PE64 FPS  459.432
+resnet50PE64 FPS  321.543
+
+TensorRT:
+
+```
+
