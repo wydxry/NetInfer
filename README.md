@@ -57,7 +57,7 @@ PS:
 
 CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT's lib and include files should be copy to CUDA folders.
 
-## How to use
+## How to use (Python)
 
 1. Net to onnx
 
@@ -83,6 +83,9 @@ CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT'
    python infer_tensorrt.py
    ```
 
+## How to use (C++)
+1. download libs and add related path.
+2. run infer_onnx.cpp
 ## Test Result
 
 ### Python
