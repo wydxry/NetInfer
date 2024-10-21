@@ -85,7 +85,14 @@ CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT'
 
 ## How to use (C++)
 1. download libs and add related path.
-2. run infer_onnx.cpp
+2. get xxx.onnx and xxx.engine
+3. run infer_onnx.cpp
+4. run infer_tensorrt.cpp
+
+PS:
+
+CUDA, cuDNN, OnnxRuntime and TensorRT's lib and include files should be added to the project path, such as cudart.lib etc.
+   
 ## Test Result
 
 ### Python
@@ -93,25 +100,25 @@ CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT'
 ```
 Onnx (GPU):
 resnet10 FPS 1104.949544 
-resnet18 FPS  516.008626
-resnet50 FPS  333.727555
+resnet18 FPS 516.008626
+resnet50 FPS 333.727555
+resnet10PE64 FPS 956.631219
+resnet18PE64 FPS 571.736885 
+resnet50PE64 FPS 350.914636
 resnet10PE128 FPS 503.101748 
-resnet18PE128 FPS  352.149057
-resnet50PE128 FPS  219.475096
-resnet10PE64 FPS  956.631219
-resnet18PE64 FPS  571.736885 
-resnet50PE64 FPS  350.914636
+resnet18PE128 FPS 352.149057
+resnet50PE128 FPS 219.475096
 
 TensorRT:
 resnet10 FPS 2438.268527
 resnet18 FPS 1703.828298
-resnet50 FPS 974.808511 
+resnet50 FPS 974.808511
+resnet10PE64 FPS 1989.452322 
+resnet18PE64 FPS 1149.313923 
+resnet50PE64 FPS 672.243645
 resnet10PE128 FPS 1073.175663 
-resnet18PE128 FPS  655.425035 
-resnet50PE128 FPS  380.379059
-resnet10PE64 FPS  1989.452322 
-resnet18PE64 FPS  1149.313923 
-resnet50PE64 FPS  672.243645
+resnet18PE128 FPS 655.425035 
+resnet50PE128 FPS 380.379059
 ```
 
 ### C++
@@ -120,14 +127,22 @@ Onnx (GPU):
 resnet10 FPS 1222.05
 resnet18 FPS 586.27
 resnet50 FPS 390.137
-resnet10PE128 FPS  592.557
-resnet18PE128 FPS  359.803
+resnet10PE64 FPS 887.784
+resnet18PE64 FPS 459.432
+resnet50PE64 FPS 321.543
+resnet10PE128 FPS 592.557
+resnet18PE128 FPS 359.803
 resnet50PE128 FPS 239.143
-resnet10PE64 FPS  887.784
-resnet18PE64 FPS  459.432
-resnet50PE64 FPS  321.543
 
 TensorRT:
-
+resnet10 FPS 3371.54
+resnet18 FPS 2070.82
+resnet50 FPS 1015.33
+resnet10PE64 FPS 2294.1
+resnet18PE64 FPS 1252.82
+resnet50PE64 FPS 687.805
+resnet10PE128 FPS 1094.69
+resnet18PE128 FPS 652.742
+resnet50PE128 FPS 386.25
 ```
 
