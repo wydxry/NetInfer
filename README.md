@@ -74,7 +74,14 @@ CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT'
 3. onnx to tensorrt after step 1 or step 2
 
    ```shell
+   # fp32
    trtexec --onnx=xxx.onnx --saveEngine=xxx.engine
+   
+   # fp16
+   trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --fp16
+
+   # int8
+   trtexec --onnx=xxx.onnx --saveEngine=xxx.engine --int8
    ```
 
 4. infer time in tensorrt after step 3
@@ -144,5 +151,16 @@ resnet50PE64 FPS 687.805
 resnet10PE128 FPS 1094.69
 resnet18PE128 FPS 652.742
 resnet50PE128 FPS 386.25
+
+TensorRT (FP16):
+ResNet10_FP16 FPS 6854.01
+ResNet18_FP16 FPS 4488.33
+ResNet50_FP16 FPS 2579.31
+ResNet10_PE64_FP16 FPS 5260.39
+ResNet18_PE64_FP16 FPS 3106.55
+ResNet50_PE64_FP16 FPS 1780.31
+ResNet10_PE128_FP16 FPS 3228.93
+ResNet18_PE128_FP16 FPS 2048.34
+ResNet50_PE128_FP16 FPS 1118.19 
 ```
 
