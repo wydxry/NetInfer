@@ -89,6 +89,10 @@ CUDA, cuDNN, OnnxRuntime and TensorRT should add path to the sys path, TensorRT'
    ```shell
    python infer_tensorrt.py
    ```
+5. infer time in torch (cpu & gpu)
+   ```shell
+   python infer_torch.py
+   ```
 
 ## How to use (C++)
 1. download libs and add related path.
@@ -105,6 +109,28 @@ CUDA, cuDNN, OnnxRuntime and TensorRT's lib and include files should be added to
 ### Python
 
 ```
+Torch (CPU):
+ResNet10 FPS 113.58191
+ResNet18 FPS 68.064344 
+ResNet50 FPS 40.726698
+ResNet10_PE64 FPS 70.718973 
+ResNet18_PE64 FPS 36.965400 
+ResNet50_PE64 FPS 26.087974
+ResNet10_PE128 FPS 29.20346
+ResNet18_PE128 FPS 18.42818
+ResNet50_PE128 FPS 9.810414
+
+Torch (GPU):
+ResNet10 FPS 1094.2849
+ResNet18 FPS 623.55040
+ResNet50 FPS 328.40845
+ResNet10_PE64 FPS 509.50153
+ResNet18_PE64 FPS 264.40072
+ResNet50_PE64 FPS 405.38294
+ResNet10_PE128 FPS 749.59062790
+ResNet18_PE128 FPS 524.28793446
+ResNet50_PE128 FPS 140.03763848
+
 Onnx (GPU):
 resnet10 FPS 1104.949544 
 resnet18 FPS 516.008626
