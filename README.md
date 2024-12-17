@@ -12,6 +12,7 @@ cuDnn 8.9.7.29
 TensorRT 10.5.0.18
 PyTorch 2.4.1
 Python 3.10
+Pycuda 2024.1.2
 onnx 1.17.0
 onnxruntime-gpu 1.19.2 (Python)
 onnxruntime-gpu 1.18.0 (C++)

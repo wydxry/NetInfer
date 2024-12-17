@@ -1,3 +1,10 @@
+# -*- encoding: utf-8 -*-
+'''
+@Time    :   2024/12/17 15:38:21
+@Author  :   Li Zeng 
+'''
+
+
 import numpy as np
 import tensorrt as trt
 import pycuda.driver as cuda
@@ -15,14 +22,19 @@ class ONNXClassifierWrapper():
         self.stream = None
 
     def load(self, file):
-        f = open(file, "rb")
-        self.runtime = trt.Runtime(trt.Logger(trt.Logger.WARNING))
-
-        self.engine = self.runtime.deserialize_cuda_engine(f.read())
-        self.context = self.engine.create_execution_context()
+        with open(file, "rb") as f:
+            self.runtime = trt.Runtime(trt.Logger(trt.Logger.WARNING))
+            self.engine = self.runtime.deserialize_cuda_engine(f.read())
+            self.context = self.engine.create_execution_context()
 
     def allocate_memory(self, batch):
-        self.output = np.empty(self.num_classes, dtype=self.target_dtype)  # Need to set both input and output precisions to FP16 to fully enable FP16
+        print(batch.shape)
+        input_shape = batch.shape  # Assuming the first dimension is the batch size
+        batch_size = input_shape[0]
+
+        output_shape = (batch_size, self.num_classes)
+
+        self.output = np.empty(output_shape, dtype=self.target_dtype)  # Need to set both input and output precisions to FP16 to fully enable FP16
 
         # Allocate device memory
         self.d_input = cuda.mem_alloc(1 * batch.nbytes)
@@ -68,6 +80,7 @@ def convert_onnx_to_engine(onnx_filename, engine_filename=None, max_workspace_si
 
         print("Building TensorRT engine. This may take a few minutes.")
         serialized_engine = builder.build_serialized_network(network, builder_config)
+        print("Building TensorRT engine end.")
 
         if engine_filename:
             with open(engine_filename, 'wb') as f:
